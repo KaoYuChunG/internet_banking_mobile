@@ -10,6 +10,5 @@
 
     <style name="toolbar_white" parent="Base.Theme.AppCompat">
         <item name="android:background">@color/botao</item>
-        <item name="android:colorControlNormal">@color/texto</item>
     </style>
 </resources>

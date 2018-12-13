@@ -5,12 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.example.xxx.internetbanking.conta.corrente.ExtratoActivity;
-
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnContaCorrente;
-    private Button btnEmprestimo;
+    private Button mBtnContaCorrente;
+    private Button mBtnEmprestimo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,15 +18,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setup() {
-        btnContaCorrente = findViewById(R.id.btn_conta_corrente);
-        btnEmprestimo = findViewById(R.id.btn_emprestimo);
+        mBtnContaCorrente = findViewById(R.id.btn_conta_corrente);
+        mBtnEmprestimo = findViewById(R.id.btn_emprestimo);
 
-        btnContaCorrente.setOnClickListener(v -> {
+        mBtnContaCorrente.setOnClickListener(v -> {
             Intent i = new Intent(MainActivity.this, CorrenteActivity.class);
             startActivity(i);
         });
 
-        btnEmprestimo.setOnClickListener(v -> {
+        mBtnEmprestimo.setOnClickListener(v -> {
             Intent i = new Intent(MainActivity.this, EmprestimoActivity.class);
             startActivity(i);
         });
