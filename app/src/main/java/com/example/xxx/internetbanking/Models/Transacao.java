@@ -7,7 +7,6 @@ import java.util.Date;
 
 public class Transacao implements Serializable {
 
-
     @SerializedName("id")
     public int id;
 

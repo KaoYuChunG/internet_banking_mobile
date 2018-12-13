@@ -29,10 +29,16 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".EmprestimoActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".CorrenteActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ListarDebitoAutomaticoActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".DebitoAutomaticoActivity"
+            android:parentActivityName=".ListarDebitoAutomaticoActivity"></activity>
     </application>
 
 </manifest>

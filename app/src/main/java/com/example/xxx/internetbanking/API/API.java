@@ -1,5 +1,6 @@
 package com.example.xxx.internetbanking.API;
 
+import com.example.xxx.internetbanking.Models.DebitoAutomatico;
 import com.example.xxx.internetbanking.Models.Transacao;
 import com.example.xxx.internetbanking.Models.Usuario;
 
@@ -14,8 +15,11 @@ import retrofit2.http.Path;
 public interface API {
 
     @GET("api/transacao")
-    public Call<List<Transacao>> getTrabsacoes();
+    Call<List<Transacao>> getTrabsacoes();
 
     @GET("api/transacao/login/{id}")
     Call<Usuario> getUsuario(@Path("id") int id);
+
+    @GET("api/conta")
+    Call<List<DebitoAutomatico>> getDebitosAutomaticos();
 }
