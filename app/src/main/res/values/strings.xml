@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">InternetBanking</string>
+    <string name="lbl_emprestimo">Empréstimo</string>
+    <string name="lbl_conta_corrente">Conta Corrente</string>
 </resources>
