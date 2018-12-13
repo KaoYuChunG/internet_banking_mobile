@@ -27,7 +27,9 @@
         <activity
             android:name=".conta.corrente.ExtratoActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".EmprestimoActivity"></activity>
+        <activity
+            android:name=".EmprestimoActivity"
+            android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".CorrenteActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>

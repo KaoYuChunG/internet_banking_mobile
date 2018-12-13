@@ -2,6 +2,8 @@ package com.example.xxx.internetbanking.Utils;
 
 import android.content.Context;
 
+import com.example.xxx.internetbanking.Models.Usuario;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -24,6 +26,7 @@ import static java.security.cert.CertificateFactory.getInstance;
 public abstract class ServiceGenerator {
 
     public static String STRING_TOKEN;
+    public static Usuario usuario;
     private final static String URL = "http://10.0.2.2:5000/";
 
     public static Retrofit retrofit(){
