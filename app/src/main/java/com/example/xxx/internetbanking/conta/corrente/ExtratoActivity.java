@@ -13,6 +13,7 @@ import com.example.xxx.internetbanking.API.API;
 import com.example.xxx.internetbanking.Adapter.TransacoesAdapter;
 import com.example.xxx.internetbanking.Models.Transacao;
 import com.example.xxx.internetbanking.R;
+import com.example.xxx.internetbanking.Utils.ServiceGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,7 +70,7 @@ public class ExtratoActivity extends AppCompatActivity {
         Retrofit retrofit =  new Retrofit
                 .Builder()
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("https://192.168.1.1:44397/api")
+                .baseUrl("http://10.0.2.2:5000/")
                 .build();
 
         API api = retrofit.create(API.class);
@@ -83,9 +84,8 @@ public class ExtratoActivity extends AppCompatActivity {
                     mAdapter = new TransacoesAdapter(ExtratoActivity.this, mList);
                     mRecycler.setAdapter(mAdapter);
 
-
-
                 }else{
+                    Toast.makeText(ExtratoActivity.this, "erro", Toast.LENGTH_SHORT).show();
                     Toast.makeText(ExtratoActivity.this, response.message(),Toast.LENGTH_LONG).show();
                 }
 

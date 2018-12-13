@@ -10,6 +10,6 @@ import retrofit2.http.Header;
 
 public interface API {
 
-    @GET("/transacao")
+    @GET("api/transacao")
     public Call<List<Transacao>> getTrabsacoes();
 }
