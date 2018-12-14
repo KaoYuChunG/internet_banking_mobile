@@ -7,17 +7,16 @@ import java.util.Date;
 
 public class Transacao implements Serializable {
 
-    @SerializedName("id")
-    public int id;
 
-    @SerializedName("id_tipo_transacao")
-    public int id_tipo_transacao;
+
+    @SerializedName("tipo_transacao_descricao")
+    public String tipo_transacao;
 
     @SerializedName("data")
-    public Date data;
+    public String data;
 
     @SerializedName("hora")
-    public Date hora;
+    public String hora;
 
     @SerializedName("valor")
     public float valor;

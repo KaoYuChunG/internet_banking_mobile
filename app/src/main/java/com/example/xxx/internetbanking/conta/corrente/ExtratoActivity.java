@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.xxx.internetbanking.API.API;
+import com.example.xxx.internetbanking.Adapter.AdapterPositionOnClickListener;
 import com.example.xxx.internetbanking.Adapter.TransacoesAdapter;
+import com.example.xxx.internetbanking.ListarDebitoAutomaticoActivity;
 import com.example.xxx.internetbanking.Models.Transacao;
 import com.example.xxx.internetbanking.R;
 import com.example.xxx.internetbanking.Utils.ServiceGenerator;
@@ -24,7 +26,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ExtratoActivity extends AppCompatActivity {
+public class ExtratoActivity extends AppCompatActivity implements AdapterPositionOnClickListener {
 
 
     private Toolbar mToolbar;
@@ -67,11 +69,7 @@ public class ExtratoActivity extends AppCompatActivity {
     }
 
     private void loadData(){
-        Retrofit retrofit =  new Retrofit
-                .Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("http://10.0.2.2:5000/")
-                .build();
+        Retrofit retrofit = ServiceGenerator.retrofit();
 
         API api = retrofit.create(API.class);
 
@@ -82,6 +80,7 @@ public class ExtratoActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     mList = response.body();
                     mAdapter = new TransacoesAdapter(ExtratoActivity.this, mList);
+                    mAdapter.setAdapterPositionOnClickListener(ExtratoActivity.this);
                     mRecycler.setAdapter(mAdapter);
 
                 }else{
@@ -113,4 +112,8 @@ public class ExtratoActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void setAdapterPositionOnClickListener(View view, int position) {
+
+    }
 }

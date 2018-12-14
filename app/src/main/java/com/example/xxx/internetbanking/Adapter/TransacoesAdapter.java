@@ -8,20 +8,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.xxx.internetbanking.Models.DebitoAutomatico;
 import com.example.xxx.internetbanking.Models.Transacao;
 import com.example.xxx.internetbanking.R;
+import com.example.xxx.internetbanking.conta.corrente.ExtratoActivity;
 
 import java.util.List;
 
 public class TransacoesAdapter extends RecyclerView.Adapter<TransacoesAdapter.viewHolder> {
     private Context mContext;
-
+    private AdapterPositionOnClickListener mAadapterPositionOnClickListener;
     public List<Transacao> mList;
 
 
     public TransacoesAdapter(Context context, List<Transacao> list){
         this.mContext = context;
         this.mList = list;
+    }
+
+    public void setAdapterPositionOnClickListener(AdapterPositionOnClickListener click){
+        mAadapterPositionOnClickListener = click;
     }
     @NonNull
     @Override
@@ -37,24 +43,30 @@ public class TransacoesAdapter extends RecyclerView.Adapter<TransacoesAdapter.vi
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         Transacao transacao = mList.get(position);
 
-        String data = String.valueOf(transacao.data);
-        String hora = String.valueOf(transacao.hora);
-        String t = String.valueOf(transacao.id_tipo_transacao == 1 ? "débito" : "Crédito");
-        String valor = String.valueOf(transacao.valor);
-
-
-
-        holder.lbl_data.setText(data);
-        holder.lbl_hora.setText(hora);
-        holder.lbl_transacao.setText(t);
-        holder.lbl_valor.setText(valor);
+        holder.lbl_data.setText(transacao.data);
+        holder.lbl_hora.setText(transacao.hora);
+        holder.lbl_transacao.setText(transacao.tipo_transacao);
+        holder.lbl_valor.setText(String.valueOf(transacao.valor));
     }
+    public Transacao getTransacao(int position)
+    {
+        return mList.get(position);
+    }
+
+    public void deleteItem(int positon){
+        mList.remove(positon);
+        notifyItemRemoved(positon);
+    }
+
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mList.size();
     }
-    public class viewHolder extends RecyclerView.ViewHolder  {
+
+
+
+    public class viewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView lbl_data;
         public TextView lbl_hora;
@@ -71,7 +83,15 @@ public class TransacoesAdapter extends RecyclerView.Adapter<TransacoesAdapter.vi
             lbl_transacao = itemView.findViewById(R.id.lbltransacao);
             lbl_valor = itemView.findViewById(R.id.lblValor);
 
-//            itemView.setOnClickListener(this);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            if(mAadapterPositionOnClickListener != null){
+
+                mAadapterPositionOnClickListener.setAdapterPositionOnClickListener(v, getPosition());
+            }
         }
     }
 }
