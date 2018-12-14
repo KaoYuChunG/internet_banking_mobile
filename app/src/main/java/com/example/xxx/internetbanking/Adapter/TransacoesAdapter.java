@@ -79,7 +79,7 @@ public class TransacoesAdapter extends RecyclerView.Adapter<TransacoesAdapter.vi
             super(itemView);
 
             lbl_data = itemView.findViewById(R.id.lblData);
-            lbl_data = itemView.findViewById(R.id.lblhora);
+            lbl_hora = itemView.findViewById(R.id.lblhora);
             lbl_transacao = itemView.findViewById(R.id.lbltransacao);
             lbl_valor = itemView.findViewById(R.id.lblValor);
 
